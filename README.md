@@ -1,4 +1,3 @@
-# DiffATS-demo
-Demo for *Speech Reconstruction from Lip and Tongue Articulation by Diffusion Models and Text-Guided Pseudo Targets Generation*.
+Project Page for *Speech Reconstruction from Lip and Tongue Articulation by Diffusion Models and Text-Guided Pseudo Targets Generation*.
 
-Demo page is available at: <https://zhengrachel.github.io/DiffATS-demo/>.
+Demo page is available at: <https://zhengrachel.github.io/Diff-A2A/>.
