@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Proposed-A2A-demo</title>
+    
+    <meta name="description" content="Demo Page for Proposed-A2A">
+    
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="css/fontawesome.all.min.css">
+    <link rel="stylesheet" type="text/css"  href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
+    
+    <link rel="stylesheet" href="css/fontawesome.all.min.css">
+    <link rel="stylesheet" type="text/css"  href="css/style.css">
+    
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">  
+    <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600,300' rel='stylesheet' type='text/css'> -->
+    <script type="text/javascript" src="js/modernizr.custom.js"></script>
+
+</head>
+
+
+<body>
+  
+  <div class="container">
+
+    <div class="section-title text-center center">
+        <h1 style="color:black"><strong><br><br> Speech Reconstruction from Lip and Tongue Articulation by <br> Diffusion Models and Text-Guided Pseudo Target Generation</b><strong></h1>
+        <br><br> 
+        <font color="black" size="4"> Author: </font>
+        <a href="https://raw.githubusercontent.com/LipVoicer/LipVoicer.github.io/main/data/LRS2.zip"><font color="black" size="4"><u>Rui-Chen Zheng</u></a>,
+            <a href="https://raw.githubusercontent.com/LipVoicer/LipVoicer.github.io/main/data/LRS2.zip"><font color="black" size="4"><u>Yang Ai</u></a>, 
+            <font color="black" size="4">and </font>
+        <a href="https://raw.githubusercontent.com/LipVoicer/LipVoicer.github.io/main/data/LRS3.zip"><font color="black" size="4"><u>Zhen-Hua Ling</u></a>
+    </div>
+
+    <div class="portfolio-item"> 
+        <img style="border:0px solid black;" src="img/method.png" class="img-responsive" alt="method"><br><br>
+    </div> 
+
+    <div class="row">
+      
+          <div class="col-md-10 col-md-offset-1">
+
+                <p style="color:black; font-family:Sans-Serif; font-size:16px">                         
+                    This paper studies the task of speech reconstruction from ultrasound tongue images and optical lip videos, with a particular focus on a silent speaking mode, where people only activate their intra-oral and extra-oral articulators without producing real speech. 
+                    This task falls under the umbrella of articulatory-to-acoustic (A2A) conversion, and may also be referred to as a silent speech interface (SSI). 
+                    We propose to employ denoising diffusion probablistic models (DDPMs) as the fundamental architecture for the A2A conversion task. 
+                    Moreover, since no real speech is output in the silent speaking mode, we further propose a novel pseudo target generation strategy, aiming to generate pseudo acoustic features for silent articulation under the guidance of the text information. 
+                    Experiments show that our proposed method significantly improves the intelligibility and naturalness of the reconstructed speech in the silent speaking mode compared to all the baselines. 
+                    Specifically, the word error rate (WER) of the reconstructed speech further decreases by approximately 5% when using an automatic speech recognition (ASR) model to measure intelligibility, and the naturalness mean opinion scores (MOS) of the reconstructed speech is further improved by 0.14.
+                </p> <br><hr><br>
+      
+          </div>
+    </div>
+
+  </div>
+<!-- </div> -->
+
+  <!-- <div class="container">
+    <div class="section-title center">
+    
+    <p style="color:black; font-family:Sans-Serif; font-size:24px;"> LRS2 Dataset </p>
+    <br><br>  -->
+
+    <div class="inner">
+        <!-- <div class="section-title center"> -->
+    <div class="section-title text-center center">
+      <!-- <div class="col-md-20 col-md-offset--100"> -->
+    
+        <p style="color:black; font-family:Sans-Serif; font-size:24px;"> Speech Reconstructed in Vocalized Speaking Mode</p>
+        
+        <p style="color:black; font-family:Sans-Serif; font-size:18px;"> For more samples, please refer to <a href="Vocalized_Video">this folder</a>.</p>
+
+        <br><br>
+
+        <div style="width:1600px; margin:0 auto;">
+
+            <table border=0 justify="center" cellpadding="20px" style="width: 95%">
+                <tr>
+                <th style="background-color:white;position: sticky; top: 0;width: 20%; text-align: center; padding: 10px; color:black">Content</th>
+                <th style=" background-color:white;position: sticky; top: 0; width: 20%; text-align: center; padding: 10px; color:black">Ground-Truth</th>
+                <th style=" background-color:white; position: sticky; top: 0;width: 20%; text-align: center; padding: 10px; color:black">Vocoder-Recon </th>
+                <th style=" background-color:white; position: sticky; top: 0;width: 20%; text-align: center; padding: 10px; color:black">TaLNet </th>
+                <th style="background-color:white;position: sticky; top: 0;width: 20%; text-align: center; padding: 10px; color:black">Proposed-A2A</th>
+                <!-- <th style="background-color:white;position: sticky; top: 0;width: 20%; text-align: center; padding: 10px; color:black">SVTS</th> -->
+                </tr>
+
+
+                <tr>
+                    <td style="width: 18%; text-align: center; padding: 10px; color:black">
+                        <p style="color:black; font-family:Comic Sans MS; font-size:15px;">The difference in the rainbow depends considerably upon the size of the water drops, and the width of the coloured band increases as the size of the drops increases.</p>
+                    </td>
+
+                    <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Vocalized_Video/GroundTruth/11fe-019_xaud.mp4" type="video/mp4"></video>
+                    </td>
+            
+                    <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                        <video width="300" controls><source src="Vocalized_Video/Vocoder-Recon/11fe-019_xaud.mp4" type="video/mp4"></video>
+                    </td>
+            
+                    <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Vocalized_Video/TaLNet/11fe-019_xaud.mp4" type="video/mp4"></video>
+                    </td>
+            
+                    <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                        <video width="300" controls><source src="Vocalized_Video/Proposed-A2A/11fe-019_xaud.mp4" type="video/mp4"></video>
+                    </td>
+            
+                    <!-- <td style="width: 20%; text-align: center; padding: 10px; color:black">
+                        <video width="250" controls><source src="data/LRS2/good/66365141533126941637_00060_svts.webm" type="video/webm"></video>
+                    </td> -->
+                </tr>
+
+                <tr>
+                    <td style="width: 18%; text-align: center; padding: 10px; color:black">
+                        <p style="color:black; font-family:Comic Sans MS; font-size:15px;">This is a very common type of bow, one showing mainly red and yellow, with little or no green or blue.</p>
+                    </td>
+
+                    <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Vocalized_Video/GroundTruth/25fs-022_xaud.mp4" type="video/mp4"></video>
+                    </td>
+            
+                    <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                        <video width="300" controls><source src="Vocalized_Video/Vocoder-Recon/25fs-022_xaud.mp4" type="video/mp4"></video>
+                    </td>
+            
+                    <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Vocalized_Video/TaLNet/25fs-022_xaud.mp4" type="video/mp4"></video>
+                    </td>
+            
+                    <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                        <video width="300" controls><source src="Vocalized_Video/Proposed-A2A/25fs-022_xaud.mp4" type="video/mp4"></video>
+                    </td>
+            
+                    <!-- <td style="width: 20%; text-align: center; padding: 10px; color:black">
+                        <video width="250" controls><source src="data/LRS2/good/66365141533126941637_00060_svts.webm" type="video/webm"></video>
+                    </td> -->
+                </tr>
+
+                <tr>
+                    <td style="width: 18%; text-align: center; padding: 10px; color:black">
+                        <p style="color:black; font-family:Comic Sans MS; font-size:15px;">Some have accepted it as a miracle without physical explanation.</p>
+                    </td>
+
+                    <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Vocalized_Video/GroundTruth/26fs-011_xaud.mp4" type="video/mp4"></video>
+                    </td>
+            
+                    <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                        <video width="300" controls><source src="Vocalized_Video/Vocoder-Recon/26fs-011_xaud.mp4" type="video/mp4"></video>
+                    </td>
+            
+                    <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Vocalized_Video/TaLNet/26fs-011_xaud.mp4" type="video/mp4"></video>
+                    </td>
+            
+                    <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                        <video width="300" controls><source src="Vocalized_Video/Proposed-A2A/26fs-011_xaud.mp4" type="video/mp4"></video>
+                    </td>
+            
+                    <!-- <td style="width: 20%; text-align: center; padding: 10px; color:black">
+                        <video width="250" controls><source src="data/LRS2/good/66365141533126941637_00060_svts.webm" type="video/webm"></video>
+                    </td> -->
+                </tr>
+
+                <tr>
+                    <td style="width: 18%; text-align: center; padding: 10px; color:black">
+                        <p style="color:black; font-family:Comic Sans MS; font-size:15px;">The Norsemen considered the rainbow as a bridge over which the gods passed from the earth to their home in the sky.</p>
+                    </td>
+
+                    <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Vocalized_Video/GroundTruth/38me-014_xaud.mp4" type="video/mp4"></video>
+                    </td>
+            
+                    <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                        <video width="300" controls><source src="Vocalized_Video/Vocoder-Recon/38me-014_xaud.mp4" type="video/mp4"></video>
+                    </td>
+            
+                    <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Vocalized_Video/TaLNet/38me-014_xaud.mp4" type="video/mp4"></video>
+                    </td>
+            
+                    <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                        <video width="300" controls><source src="Vocalized_Video/Proposed-A2A/38me-014_xaud.mp4" type="video/mp4"></video>
+                    </td>
+            
+                    <!-- <td style="width: 20%; text-align: center; padding: 10px; color:black">
+                        <video width="250" controls><source src="data/LRS2/good/66365141533126941637_00060_svts.webm" type="video/webm"></video>
+                    </td> -->
+                </tr>
+
+                <tr>
+                    <td style="width: 18%; text-align: center; padding: 10px; color:black">
+                        <p style="color:black; font-family:Comic Sans MS; font-size:15px;">There is, according to legend, a boiling pot of gold at one end.</p>
+                    </td>
+
+                    <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Vocalized_Video/GroundTruth/48ms-007_xaud.mp4" type="video/mp4"></video>
+                    </td>
+            
+                    <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                        <video width="300" controls><source src="Vocalized_Video/Vocoder-Recon/48ms-007_xaud.mp4" type="video/mp4"></video>
+                    </td>
+            
+                    <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Vocalized_Video/TaLNet/48ms-007_xaud.mp4" type="video/mp4"></video>
+                    </td>
+            
+                    <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                        <video width="300" controls><source src="Vocalized_Video/Proposed-A2A/48ms-007_xaud.mp4" type="video/mp4"></video>
+                    </td>
+            
+                    <!-- <td style="width: 20%; text-align: center; padding: 10px; color:black">
+                        <video width="250" controls><source src="data/LRS2/good/66365141533126941637_00060_svts.webm" type="video/webm"></video>
+                    </td> -->
+                </tr>
+
+                <tr>
+                    <td style="width: 18%; text-align: center; padding: 10px; color:black">
+                        <p style="color:black; font-family:Comic Sans MS; font-size:15px;">These take the shape of a long round arch, with its path high above, and its two ends apparently beyond the horizon.</p>
+                    </td>
+
+                    <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Vocalized_Video/GroundTruth/81ms-006_xaud.mp4" type="video/mp4"></video>
+                    </td>
+            
+                    <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                        <video width="300" controls><source src="Vocalized_Video/Vocoder-Recon/81ms-006_xaud.mp4" type="video/mp4"></video>
+                    </td>
+            
+                    <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Vocalized_Video/TaLNet/81ms-006_xaud.mp4" type="video/mp4"></video>
+                    </td>
+            
+                    <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                        <video width="300" controls><source src="Vocalized_Video/Proposed-A2A/81ms-006_xaud.mp4" type="video/mp4"></video>
+                    </td>
+            
+                    <!-- <td style="width: 20%; text-align: center; padding: 10px; color:black">
+                        <video width="250" controls><source src="data/LRS2/good/66365141533126941637_00060_svts.webm" type="video/webm"></video>
+                    </td> -->
+                </tr>
+
+            </table>
+        </div>
+
+    <br><br><br>
+    <p style="color:black; font-family:Sans-Serif; font-size:24px;"> Speech Reconstructed in Silent Speaking Mode </p>
+
+    <p style="color:black; font-family:Sans-Serif; font-size:18px;"> For more samples, please refer to <a href="Silent_Video">this folder</a>.</p>
+
+    <br><br>
+
+    <div style="width:1600px; margin:0 auto;">
+
+        <table border=0 justify="center" cellpadding="20px" style="width: 95%">
+            <tr>
+            <th style="background-color:white;position: sticky; top: 0;width: 20%; text-align: center; padding: 10px; color:black">Content</th>
+            <th style=" background-color:white;position: sticky; top: 0; width: 20%; text-align: center; padding: 10px; color:black">TaLNet</th>
+            <th style=" background-color:white; position: sticky; top: 0;width: 20%; text-align: center; padding: 10px; color:black">Zheng et al. (2023) </th>
+            <th style=" background-color:white; position: sticky; top: 0;width: 20%; text-align: center; padding: 10px; color:black">Proposed-A2A </th>
+            <th style="background-color:white;position: sticky; top: 0;width: 20%; text-align: center; padding: 10px; color:black">Proposed</th>
+            <!-- <th style="background-color:white;position: sticky; top: 0;width: 20%; text-align: center; padding: 10px; color:black">SVTS</th> -->
+            </tr>
+
+
+            <tr>
+                <td style="width: 18%; text-align: center; padding: 10px; color:black">
+                    <p style="color:black; font-family:Comic Sans MS; font-size:15px;">There is, according to legend, a boiling pot of gold at one end.</p>
+                </td>
+
+                <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                <video width="300" controls><source src="Silent_Video/TaLNet/17ms-032_xsil.mp4" type="video/mp4"></video>
+                </td>
+        
+                <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Silent_Video/Zheng-et-al-2023/17ms-032_xsil.mp4" type="video/mp4"></video>
+                </td>
+        
+                <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                <video width="300" controls><source src="Silent_Video/Proposed-A2A/17ms-032_xsil.mp4" type="video/mp4"></video>
+                </td>
+        
+                <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Silent_Video/Proposed/17ms-032_xsil.mp4" type="video/mp4"></video>
+                </td>
+        
+                <!-- <td style="width: 20%; text-align: center; padding: 10px; color:black">
+                    <video width="250" controls><source src="data/LRS2/good/66365141533126941637_00060_svts.webm" type="video/webm"></video>
+                </td> -->
+            </tr>
+
+            <tr>
+                <td style="width: 18%; text-align: center; padding: 10px; color:black">
+                    <p style="color:black; font-family:Comic Sans MS; font-size:15px;">These take the shape of a long round arch, with its path high above, and its two ends apparently beyond the horizon.</p>
+                </td>
+
+                <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                <video width="300" controls><source src="Silent_Video/TaLNet/19fs-032_xsil.mp4" type="video/mp4"></video>
+                </td>
+        
+                <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Silent_Video/Zheng-et-al-2023/19fs-032_xsil.mp4" type="video/mp4"></video>
+                </td>
+        
+                <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                <video width="300" controls><source src="Silent_Video/Proposed-A2A/19fs-032_xsil.mp4" type="video/mp4"></video>
+                </td>
+        
+                <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Silent_Video/Proposed/19fs-032_xsil.mp4" type="video/mp4"></video>
+                </td>
+        
+                <!-- <td style="width: 20%; text-align: center; padding: 10px; color:black">
+                    <video width="250" controls><source src="data/LRS2/good/66365141533126941637_00060_svts.webm" type="video/webm"></video>
+                </td> -->
+            </tr>
+
+            <tr>
+                <td style="width: 18%; text-align: center; padding: 10px; color:black">
+                    <p style="color:black; font-family:Comic Sans MS; font-size:15px;">The rainbow is a division of white light into many beautiful colours.</p>
+                </td>
+
+                <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                <video width="300" controls><source src="Silent_Video/TaLNet/28ms-030_xsil.mp4" type="video/mp4"></video>
+                </td>
+        
+                <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Silent_Video/Zheng-et-al-2023/28ms-030_xsil.mp4" type="video/mp4"></video>
+                </td>
+        
+                <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                <video width="300" controls><source src="Silent_Video/Proposed-A2A/28ms-030_xsil.mp4" type="video/mp4"></video>
+                </td>
+        
+                <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Silent_Video/Proposed/28ms-030_xsil.mp4" type="video/mp4"></video>
+                </td>
+        
+                <!-- <td style="width: 20%; text-align: center; padding: 10px; color:black">
+                    <video width="250" controls><source src="data/LRS2/good/66365141533126941637_00060_svts.webm" type="video/webm"></video>
+                </td> -->
+            </tr>
+
+            <tr>
+                <td style="width: 18%; text-align: center; padding: 10px; color:black">
+                    <p style="color:black; font-family:Comic Sans MS; font-size:15px;">There is, according to legend, a boiling pot of gold at one end.</p>
+                </td>
+
+                <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                <video width="300" controls><source src="Silent_Video/TaLNet/35fs-031_xsil.mp4" type="video/mp4"></video>
+                </td>
+        
+                <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Silent_Video/Zheng-et-al-2023/35fs-031_xsil.mp4" type="video/mp4"></video>
+                </td>
+        
+                <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                <video width="300" controls><source src="Silent_Video/Proposed-A2A/35fs-031_xsil.mp4" type="video/mp4"></video>
+                </td>
+        
+                <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Silent_Video/Proposed/35fs-031_xsil.mp4" type="video/mp4"></video>
+                </td>
+        
+                <!-- <td style="width: 20%; text-align: center; padding: 10px; color:black">
+                    <video width="250" controls><source src="data/LRS2/good/66365141533126941637_00060_svts.webm" type="video/webm"></video>
+                </td> -->
+            </tr>
+
+            <tr>
+                <td style="width: 18%; text-align: center; padding: 10px; color:black">
+                    <p style="color:black; font-family:Comic Sans MS; font-size:15px;">The rainbow is a division of white light into many beautiful colours.</p>
+                </td>
+
+                <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                <video width="300" controls><source src="Silent_Video/TaLNet/54mn-030_xsil.mp4" type="video/mp4"></video>
+                </td>
+        
+                <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Silent_Video/Zheng-et-al-2023/54mn-030_xsil.mp4" type="video/mp4"></video>
+                </td>
+        
+                <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                <video width="300" controls><source src="Silent_Video/Proposed-A2A/54mn-030_xsil.mp4" type="video/mp4"></video>
+                </td>
+        
+                <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Silent_Video/Proposed/54mn-030_xsil.mp4" type="video/mp4"></video>
+                </td>
+        
+                <!-- <td style="width: 20%; text-align: center; padding: 10px; color:black">
+                    <video width="250" controls><source src="data/LRS2/good/66365141533126941637_00060_svts.webm" type="video/webm"></video>
+                </td> -->
+            </tr>
+
+            <tr>
+                <td style="width: 18%; text-align: center; padding: 10px; color:black">
+                    <p style="color:black; font-family:Comic Sans MS; font-size:15px;">When a man looks for something beyond his reach, his friends say he is looking for the pot of gold at the end of the rainbow.</p>
+                </td>
+
+                <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                <video width="300" controls><source src="Silent_Video/TaLNet/73fe-034_xsil.mp4" type="video/mp4"></video>
+                </td>
+        
+                <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Silent_Video/Zheng-et-al-2023/73fe-034_xsil.mp4" type="video/mp4"></video>
+                </td>
+        
+                <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                <video width="300" controls><source src="Silent_Video/Proposed-A2A/73fe-034_xsil.mp4" type="video/mp4"></video>
+                </td>
+        
+                <td style="width: 22%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Silent_Video/Proposed/73fe-034_xsil.mp4" type="video/mp4"></video>
+                </td>
+        
+                <!-- <td style="width: 20%; text-align: center; padding: 10px; color:black">
+                    <video width="250" controls><source src="data/LRS2/good/66365141533126941637_00060_svts.webm" type="video/webm"></video>
+                </td> -->
+            </tr>
+
+
+            
+        </table>
+    </div>
+
+    <br><br>
+    <p style="color:black; font-family:Sans-Serif; font-size:24px;"> Pseudo Targets Generated by the Proposed Dubbing Strategy and the Previous DTW Strategy </p>
+
+    <p style="color:black; font-family:Sans-Serif; font-size:18px;"> For more samples, please refer to <a href="Pseudo-Targets">this folder</a>.</p>
+
+    <p style="color:black; font-family:Sans-Serif; font-size:18px;"> The pseudo targets generated by the DTW strategy failed to synchronize with the lip and tongue movements though maintaining the right linguistic content. </p>
+
+    <br><br>
+
+    <div style="width: 50%; margin: 0 auto;">
+        <table border="0" cellpadding="20px" style="width: 100%">
+            <tr>
+                <th style=" background-color:white;position: sticky; top: 0; width: 20%; text-align: center; padding: 10px; color:black"> Content </th>
+                <th style=" background-color:white; position: sticky; top: 0;width: 40%; text-align: center; padding: 10px; color:black"> Dubbing </th>
+                <th style=" background-color:white; position: sticky; top: 0;width: 40%; text-align: center; padding: 10px; color:black"> DTW </th>
+            </tr>
+            
+            <tr>
+                <td style="width: 20%; text-align: center; padding: 10px; color:black">
+                    <p style="color:black; font-family:Comic Sans MS; font-size:15px;">The friendly gang left the drug store.</p>
+                </td>
+    
+                <td style="width: 40%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Pseudo-Targets/06fe-040_sil_dubbing.mp4" type="video/mp4"></video>
+                </td>
+        
+                <td style="width: 40%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Pseudo-Targets/06fe-040_sil_dtw.mp4" type="video/mp4"></video>
+                </td>
+            </tr>
+
+            <tr>
+                <td style="width: 20%; text-align: center; padding: 10px; color:black">
+                    <p style="color:black; font-family:Comic Sans MS; font-size:15px;">When sunlight strikes raindrops in the air, they act like a prism and form a rainbow.</p>
+                </td>
+    
+                <td style="width: 40%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Pseudo-Targets/09fe-030_xsil_dubbing.mp4" type="video/mp4"></video>
+                </td>
+        
+                <td style="width: 40%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Pseudo-Targets/09fe-030_xsil_dtw.mp4" type="video/mp4"></video>
+                </td>
+            </tr>
+
+            <tr>
+                <td style="width: 20%; text-align: center; padding: 10px; color:black">
+                    <p style="color:black; font-family:Comic Sans MS; font-size:15px;">Ten pins were set in order.</p>
+                </td>
+    
+                <td style="width: 40%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Pseudo-Targets/11fe-045_sil_dubbing.mp4" type="video/mp4"></video>
+                </td>
+        
+                <td style="width: 40%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Pseudo-Targets/11fe-045_sil_dtw.mp4" type="video/mp4"></video>
+                </td>
+            </tr>
+
+            <tr>
+                <td style="width: 20%; text-align: center; padding: 10px; color:black">
+                    <p style="color:black; font-family:Comic Sans MS; font-size:15px;">People look, but no one ever finds it.</p>
+                </td>
+    
+                <td style="width: 40%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Pseudo-Targets/30me-032_xsil_dubbing.mp4" type="video/mp4"></video>
+                </td>
+        
+                <td style="width: 40%; text-align: center; padding: 10px; color:black">
+                    <video width="300" controls><source src="Pseudo-Targets/30me-032_xsil_dtw.mp4" type="video/mp4"></video>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+
+
+</div>
+</div>
+
+
+<script type="text/javascript" src="js/jquery.1.11.1.js"></script> 
+<script type="text/javascript" src="js/bootstrap.js"></script> 
+<script type="text/javascript" src="js/SmoothScroll.js"></script> 
+<script type="text/javascript" src="js/nivo-lightbox.js"></script> 
+<script type="text/javascript" src="js/jquery.isotope.js"></script> 
+<script type="text/javascript" src="js/jqBootstrapValidation.js"></script> 
+<script type="text/javascript" src="js/contact_me.js"></script> 
+<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
